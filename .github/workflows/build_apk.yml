@@ -23,8 +23,14 @@ jobs:
         flutter-version: '3.19.x'
         channel: 'stable'
 
-    - name: Init Android Platform
-      run: flutter create . --platforms=android --overwrite
+    - name: Generate Android Scaffold on Cloud
+      run: |
+        flutter create temp_app --org com.polyhydro.app --platforms=android
+        cp -r temp_app/android ./android
+        rm -rf temp_app
+
+    - name: Install dependencies
+      run: flutter pub get
 
     - name: Build Release APK
       run: flutter build apk --release
