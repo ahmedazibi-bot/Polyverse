@@ -23,8 +23,8 @@ jobs:
         flutter-version: '3.19.x'
         channel: 'stable'
 
-    - name: Create Android Platform if missing
-      run: flutter create . --platforms=android --org com.polyhydro.app
+    - name: Init Android Platform
+      run: flutter create . --platforms=android --overwrite
 
     - name: Build Release APK
       run: flutter build apk --release
